@@ -1,17 +1,17 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
     import Snowflakes from './lib/Snowflakes.svelte';
-    import Door from './lib/Door.svelte';
-    import DoorList from './lib/DoorList.svelte';
     import Lights from './lib/Lights.svelte';
     import AnimatedDoor from './lib/AnimatedDoor.svelte';
     import DoorOne from './lib/doors/DoorOne.svelte';
+    import BackgroundMusic from './lib/BackgroundMusic.svelte';
+
+
+    
 </script>
 
 <Snowflakes />
 <Lights />
+<!-- <BackgroundMusic /> -->
 
 <main>
   <div class="door-container">

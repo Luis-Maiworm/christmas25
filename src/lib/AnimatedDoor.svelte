@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+    import { playSound } from './playSound';
 
   // persisted open state
   let opened = false;
@@ -50,6 +51,7 @@
     if (!interactable) return;
     // If any dialog is currently open, ignore clicks so underlying doors don't toggle.
     if (typeof document !== 'undefined' && document.querySelector('dialog[open]')) return;
+    if (!opened) playSound("door.mp3");
     opened = !opened;
     persistOpened();
   }
@@ -207,6 +209,8 @@
   .wrap.open .day{
     animation: day-hide 0.22s ease 0.1s forwards;
   }
+
+
 </style>
 
 <div
