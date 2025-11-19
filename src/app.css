@@ -1,5 +1,29 @@
+/* Fonts müssen auf Top Level definiert werden */
+@font-face {
+  font-family: 'MerryChristmasFlake';
+  src: url('/MerryChristmasFlake.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MerryChristmasStar';
+  src: url('/MerryChristmasStar.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ChristmasSquad';
+  src: url('/christmas_squad.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'ChristmasSquad', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,9 +41,26 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
 }
 
 #app {
   min-height: 100vh;
+}
+
+/* Dekorative Schrift für Überschriften */
+h1, .display-font {
+  font-family: 'ChristmasSquad', 'MerryChristmasStar', 'MerryChristmasFlake', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+}
+
+/* Apply decorative fonts to all textual elements inside door-wrapper */
+.door-wrapper,
+.door-wrapper textarea,
+.door-wrapper {
+  font-family: 'MerryChristmasStar', 'MerryChristmasFlake', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Keep selector for convenience: specific display class (if needed) */
+.door-wrapper .display-font {
+  font-family: 'MerryChristmasStar', 'MerryChristmasFlake', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }

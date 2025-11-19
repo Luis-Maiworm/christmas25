@@ -17,12 +17,23 @@
 const registry = new Map(); // src -> HTMLAudioElement
 
 /**
+ * @typedef {Object} SoundOptions
+ * @property {number} [volume]
+ * @property {boolean} [loop]
+ * @property {boolean} [preload]
+ * @property {boolean} [autoplay]
+ * @property {boolean} [overlap]
+ */
+
+const CUSTOM_VOLUME = 0.3;
+
+/**
  * Create (or reuse) an audio controller for a given src
  * @param {string} src - URL to the audio file
- * @param {{volume?:number, loop?:boolean, preload?:boolean}} [opts]
+ * @param {SoundOptions} [opts]
  */
 export function createSound(src, opts = {}) {
-  const { volume = 1, loop = false, preload = true } = opts;
+  const { volume = CUSTOM_VOLUME, loop = false, preload = true } = opts;
 
   let audio = registry.get(src);
   if (!audio) {
@@ -32,7 +43,7 @@ export function createSound(src, opts = {}) {
   }
 
   audio.loop = !!loop;
-  audio.volume = typeof volume === 'number' ? volume : 1;
+  audio.volume = typeof volume === 'number' ? volume : CUSTOM_VOLUME;
 
   let pendingTryPlay = null;
 
@@ -103,9 +114,77 @@ export function createSound(src, opts = {}) {
  * @param {{volume?:number, loop?:boolean, preload?:boolean, autoplay?:boolean}} opts
  */
 export function playSound(src, opts = {}) {
-  const { autoplay = true } = opts;
+  // opts: { autoplay?, overlap?, volume?, loop?, preload? }
+  const { autoplay = true, overlap = false } = /** @type {any} */ (opts || {});
+
+  // If overlap requested, create a transient Audio instance per call so multiple
+  // playbacks of the same src can sound simultaneously.
+  if (overlap) {
+    const { volume = CUSTOM_VOLUME, loop = false, preload = true } = opts;
+    const audio = new Audio(src);
+    audio.preload = preload ? 'auto' : 'none';
+    audio.loop = !!loop;
+    audio.volume = typeof volume === 'number' ? volume : CUSTOM_VOLUME;
+
+    let pendingTryPlay = null;
+    function _scheduleTryPlay() {
+      if (pendingTryPlay) return;
+      const tryPlay = () => {
+        audio.play().catch(() => {});
+        document.removeEventListener('click', tryPlay);
+        pendingTryPlay = null;
+      };
+      pendingTryPlay = tryPlay;
+      document.addEventListener('click', tryPlay, { once: true });
+    }
+
+    const ctl = {
+      play() {
+        try {
+          const p = audio.play();
+          if (p && typeof p.then === 'function') {
+            return p.catch((err) => {
+              _scheduleTryPlay();
+              throw err;
+            });
+          }
+          return Promise.resolve();
+        } catch (err) {
+          _scheduleTryPlay();
+          return Promise.reject(err);
+        }
+      },
+      pause() {
+        audio.pause();
+      },
+      stop() {
+        audio.pause();
+        try { audio.currentTime = 0; } catch (e) {}
+      },
+      setVolume(v) {
+        audio.volume = Math.max(0, Math.min(1, Number(v) || 0));
+      },
+      isPlaying() {
+        return !!audio && !audio.paused && !audio.ended;
+      },
+      unload() {
+        try {
+          audio.pause();
+          audio.src = '';
+        } catch (e) {}
+      },
+      audio,
+    };
+
+    if (autoplay) {
+      ctl.play().catch(() => {});
+    }
+    return ctl;
+  }
+
+  const { autoplay: _a = true } = opts;
   const ctl = createSound(src, opts);
-  if (autoplay) {
+  if (_a) {
     // attempt to play but don't throw if blocked
     ctl.play().catch(() => {});
   }

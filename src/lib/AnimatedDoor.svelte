@@ -53,7 +53,7 @@
     if (!interactable) return;
     // If any dialog is currently open, ignore clicks so underlying doors don't toggle.
     if (typeof document !== 'undefined' && document.querySelector('dialog[open]')) return;
-    if (!opened) playSound("door.mp3");
+  if (!opened) playSound("door.mp3", { overlap: true });
     opened = !opened;
     persistOpened();
   }
@@ -80,7 +80,7 @@
     color: #fff;
     font-size: 38px;
     position: relative;
-    margin: 10vh auto;
+    /* margin: 10vh auto; */
     text-align: center;
     font-weight: bold;
     background: linear-gradient(135deg, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
