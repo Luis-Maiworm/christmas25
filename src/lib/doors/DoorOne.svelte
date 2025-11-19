@@ -14,14 +14,7 @@
 </script>
 
 <style>
-.surprise-wrapper {
-        padding: 1rem;
-        font-size: 1.2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-}
+
 
 .open-btn {
     display: inline-block;
@@ -53,19 +46,27 @@
     cursor: pointer;
 }
 
+.door-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+}
+
 </style>
 
-<div class="surprise-wrapper">
-        <p>Surprise for Day 1!</p>
+<div class="door-wrapper">
     <button type="button" class="open-btn" on:click|stopPropagation={openDialog} aria-haspopup="dialog">Open detail</button>
 
-        <Dialog bind:dialog={dlg}>
-            <div class="dialog-content">
-                <h3>Day {1} Surprise</h3>
-                <p>This is a small dialog for the day's surprise. You can put anything here (images, links, text).</p>
-                <div class="dialog-actions">
-                      <button type="button" class="dialog-close" on:click|stopPropagation={closeDialog}>Close</button>
-                </div>
+    <Dialog bind:dialog={dlg}>
+        <div class="dialog-content">
+            <h3>Day {1} Surprise</h3>
+            <p>This is a small dialog for the day's surprise. You can put anything here (images, links, text).</p>
+            <div class="dialog-actions">
+                    <button type="button" class="dialog-close" on:click|stopPropagation={closeDialog}>Close</button>
             </div>
-        </Dialog>
+        </div>
+    </Dialog>
 </div>

@@ -14,7 +14,9 @@
   const storageKey = () => `${storageKeyPrefix}${day}`;
 
   // computed availability: only interactable on or after day.Dec.2025
-  $: current = now ? new Date(now) : new Date();
+  $: current = now ? new Date("25-12-23") : new Date();
+  // $: current = now ? new Date(now) : new Date();
+
 //   $: targetDate = new Date(2025, 11, Number(day)); // month 11 = December
   $: targetDate = new Date(2025, 10, Number(day)); // month 11 = December
   $: interactable = current >= targetDate;
@@ -101,9 +103,7 @@
     /* keep accessibility but indicate disabled */
   }
 
-  .title {
-    display: block;
-    line-height: 1;
+  .surprise-wrapper {
   }
 
   .day{
@@ -226,7 +226,7 @@
 >
   <div class="day">{day}</div>
 
-  <span class="title">
+  <span class="surprise-wrapper">
     <slot />
   </span>
 
