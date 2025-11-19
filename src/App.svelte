@@ -1,12 +1,37 @@
 <script>
     import Snowflakes from './lib/Snowflakes.svelte';
     import Lights from './lib/Lights.svelte';
-    import AnimatedDoor from './lib/AnimatedDoor.svelte';
-    import DoorOne from './lib/doors/DoorOne.svelte';
+  import AnimatedDoor from './lib/AnimatedDoor.svelte';
     import BackgroundMusic from './lib/BackgroundMusic.svelte';
-    // Hintergrundvideo aus public/ (Vite serviert /dialog-background.mp4)
-    const bgVideoSrc = '/dialog-background.mp4';
-    // const bgVideoSrc = '/background.mp4';
+  import Door2 from './lib/doors/Door2.svelte';
+  import Door1 from './lib/doors/Door1.svelte';
+  const bgVideoSrc = '/dialog-background.mp4';
+  const doorList = [
+    Door1,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+    Door2,
+  ]
 </script>
 
 <!-- Fullscreen background video -->
@@ -23,10 +48,11 @@
     <h1>(Adventskalender 2025)</h1>
     <div class="door-container">
 
-      {#each Array.from({ length: 24 }, (_, i) => i + 1) as day}
-      <AnimatedDoor day={day}>
-        <DoorOne />
-      </AnimatedDoor>
+      <!-- use a list of component constructors so each slot can render a variable component -->
+      {#each doorList as DoorComponent, i}
+        <AnimatedDoor day={i + 1} let:opened>
+          <svelte:component this={DoorComponent} opened={opened} day={i+1}/>
+        </AnimatedDoor>
       {/each}
     </div>
 
@@ -70,6 +96,9 @@ main {
   /* slightly reduce main padding on small screens */
   main {
     padding: 0.5rem;
+  }
+  h1 {
+    font-size: 2rem;
   }
 }
 

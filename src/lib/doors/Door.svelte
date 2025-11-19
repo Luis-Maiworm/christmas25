@@ -1,7 +1,14 @@
 
 
 <script>
+  import { stopPropagation } from 'svelte/legacy';
     import Dialog from '../Dialog.svelte';
+  import GiftButton from '../GiftButton.svelte';
+  import DialogHeader from '../../components/DialogHeader.svelte';
+    // `opened` comes from the parent AnimatedDoor via slot prop
+    export let opened = false;
+    export let day = 0;
+
     let dlg = null;
 
     function openDialog() {
@@ -58,14 +65,17 @@
 </style>
 
 <div class="door-wrapper">
-    <button type="button" class="open-btn" on:click|stopPropagation={openDialog} aria-haspopup="dialog">Open detail</button>
-
+    <!-- <button type="button" class="open-btn" on:click|stopPropagation={openDialog} aria-haspopup="dialog">Open detail</button> -->
+    {#if opened}
+    <GiftButton onclick={openDialog}/>
+    {/if}
     <Dialog bind:dialog={dlg}>
         <div class="dialog-content">
-            <h3>Day {1} Surprise</h3>
-            <p>This is a small dialog for the day's surprise. You can put anything here (images, links, text).</p>
+            <h3>Türchen {day}</h3>
+            <!-- <p>Gutschein für eine Club Mate</p> -->
+            <slot/>
             <div class="dialog-actions">
-                    <button type="button" class="dialog-close" on:click|stopPropagation={closeDialog}>Close</button>
+                <button type="button" class="dialog-close" on:click|stopPropagation={closeDialog}>X</button>
             </div>
         </div>
     </Dialog>

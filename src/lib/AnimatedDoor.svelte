@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
     import { playSound } from './playSound';
+  import Door from './doors/Door.svelte';
 
   // persisted open state
   let opened = false;
@@ -53,7 +54,8 @@
     if (!interactable) return;
     // If any dialog is currently open, ignore clicks so underlying doors don't toggle.
     if (typeof document !== 'undefined' && document.querySelector('dialog[open]')) return;
-  if (!opened) playSound("door.mp3", { overlap: true });
+  // if (!opened) playSound("door.mp3", { overlap: true });
+  if (!opened) playSound("door-2.mp3", { overlap: true });
     opened = !opened;
     persistOpened();
   }
@@ -227,7 +229,10 @@
   <div class="day">{day}</div>
 
   <span class="surprise-wrapper">
-    <slot />
+    <!-- expose `displayOpened` to slot content so parents can react to open state -->
+    <Door day={day} opened={displayOpened}>
+      <slot />
+    </Door>
   </span>
 
   <div class="left">

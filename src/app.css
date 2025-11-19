@@ -35,6 +35,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  	--red1: hsl(345,100%,48%);
+	--red2: hsl(345,100%,38%);
+	--white1: hsl(0,0%,100%);
+	--white2: hsl(0,0%,90%);
+  	--blue: hsl(215,100%,20%);
 }
 
 body {
@@ -47,10 +52,14 @@ body {
   min-height: 100vh;
 }
 
-/* Dekorative Schrift für Überschriften */
+h1 {
+  font-size: 3rem;
+}
+
+button,
+h3,
 h1, .display-font {
   font-family: 'ChristmasSquad', 'MerryChristmasStar', 'MerryChristmasFlake', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 3rem;
 }
 
 /* Apply decorative fonts to all textual elements inside door-wrapper */

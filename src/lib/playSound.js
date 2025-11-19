@@ -25,7 +25,7 @@ const registry = new Map(); // src -> HTMLAudioElement
  * @property {boolean} [overlap]
  */
 
-const CUSTOM_VOLUME = 0.3;
+const CUSTOM_VOLUME = 1;
 
 /**
  * Create (or reuse) an audio controller for a given src
