@@ -28,32 +28,44 @@
     [1, DoorMate],
     [2, DoorQRCodeWebsite],
     [3, Door01099],
-    [4, DoorCuteAnimals],
+    // [4, DoorHelp],
     [5, DoorWeisheit],
     [6, DoorCafe],
     [7, DoorGemeinschaftskonto],
     [8, DoorKrppelchen], // Kräppelchen -> für den 10.
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
-    [11, DoorHelp],
-    [12, DoorHelp],
+    // [11, DoorHelp],
+    // [12, DoorHelp],
     
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
     [16, DoorGifSammlung],
-    [17, DoorHelp],
-    [18, DoorHelp],
+    // [17, DoorHelp],
+    [18, DoorCuteAnimals],
     [19, DoorHelp],
     [20, DoorStickerSammlung],
     [21, DoorGemeinschaftskontoAdd],
-    [22, DoorHelp],
-    [23, DoorHelp],
+    // [22, DoorHelp],
+    // [23, DoorHelp],
     [24, DoorVHS],
   ]);
 
-  // precompute ordered entries for iteration
+  // precompute ordered entries for iteration (by day key)
   const doorEntries = Array.from(doorMap.entries()).sort((a, b) => a[0] - b[0]);
+
+  // shuffle a copy for a randomized layout (Fisher-Yates)
+  function shuffle(array) {
+    const a = array.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  const doorEntriesRandom = shuffle(doorEntries);
 </script>
 
 <!-- Fullscreen background video -->
@@ -71,7 +83,7 @@
     <div class="door-container">
 
       <!-- use a list of component constructors so each slot can render a variable component -->
-      {#each doorEntries as [day, DoorComponent]}
+      {#each doorEntriesRandom as [day, DoorComponent]}
         <AnimatedDoor day={day} let:opened>
           <svelte:component this={DoorComponent} opened={opened} day={day}/>
         </AnimatedDoor>

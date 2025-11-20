@@ -1,1 +1,6 @@
-<p>5€ aufs Gemeinschaftskonto</p>
+<style>
+    p {
+        font-family: "ChristmasSquad";
+    }
+</style>
+<p>10€ aufs Gemeinschaftskonto</p>

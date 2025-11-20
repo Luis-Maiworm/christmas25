@@ -56,6 +56,11 @@ h1 {
   font-size: 3rem;
 }
 
+h3 {
+  margin: 0;
+  padding: 0 10px;
+}
+
 button,
 h3,
 h1, .display-font {
