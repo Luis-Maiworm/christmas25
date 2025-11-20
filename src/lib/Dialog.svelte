@@ -37,6 +37,11 @@
     position: relative;
     overflow: hidden;
   }
+  @media (max-width: 640px) {
+		dialog {
+			padding: 0.75rem;
+		}
+	}
 
   dialog::backdrop {
     background: rgba(0,0,0,0);

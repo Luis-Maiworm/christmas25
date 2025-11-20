@@ -1,0 +1,1 @@
+<p>Hier mein digitaler Adventskalender für Dich. Beachte: Gutscheine können nur durch das Aussprechen des Code-Wortes eingelöst werden!</p>

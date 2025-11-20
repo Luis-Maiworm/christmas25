@@ -3,35 +3,57 @@
     import Lights from './lib/Lights.svelte';
   import AnimatedDoor from './lib/AnimatedDoor.svelte';
     import BackgroundMusic from './lib/BackgroundMusic.svelte';
-  import Door2 from './lib/doors/Door2.svelte';
-  import Door1 from './lib/doors/Door1.svelte';
+  import DoorQRCodeWebsite from './lib/doors/DoorQRCodeWebsite.svelte';
+  import DoorMate from './lib/doors/DoorMate.svelte';
+  import Door01099 from './lib/doors/Door01099.svelte';
+  import DoorCuteAnimals from './lib/doors/DoorCuteAnimals.svelte';
+  import DoorWeisheit from './lib/doors/DoorWeisheit.svelte';
+  import DoorCafe from './lib/doors/DoorCafe.svelte';
+  import DoorSpotify from './lib/doors/DoorSpotify.svelte';
+  import DoorQRCodeRoute from './lib/doors/DoorQRCodeRoute.svelte';
+  import DoorImageCute from './lib/doors/DoorImageCute.svelte';
+  import DoorStickerSammlung from './lib/doors/DoorStickerSammlung.svelte';
+  import DoorGifSammlung from './lib/doors/DoorGifSammlung.svelte';
+  import DoorGemeinschaftskonto from './lib/doors/DoorGemeinschaftskonto.svelte';
+  import DoorGemeinschaftskontoAdd from './lib/doors/DoorGemeinschaftskontoAdd.svelte';
+  import DoorKrppelchen from './lib/doors/DoorKräppelchen.svelte';
+  import DoorHelp from './lib/doors/DoorHelp.svelte';
+  import DoorGlhwein from './lib/doors/DoorGlühwein.svelte';
+  import DoorVHS from './lib/doors/DoorVHS.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
-  const doorList = [
-    Door1,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-    Door2,
-  ]
+  // hardcoded map: day (1..24) -> Svelte component
+  // Edit these assignments to control which component appears for each day.
+  const doorMap = new Map([
+    [0, DoorHelp],
+    [1, DoorMate],
+    [2, DoorQRCodeWebsite],
+    [3, Door01099],
+    [4, DoorCuteAnimals],
+    [5, DoorWeisheit],
+    [6, DoorCafe],
+    [7, DoorGemeinschaftskonto],
+    [8, DoorKrppelchen], // Kräppelchen -> für den 10.
+    [9, DoorGlhwein], // Glühwein
+    [10, DoorQRCodeRoute], // 10!
+    [11, DoorHelp],
+    [12, DoorHelp],
+    
+    [13, DoorSpotify],
+    [14, DoorGemeinschaftskonto],
+    [15, DoorImageCute],
+    [16, DoorGifSammlung],
+    [17, DoorHelp],
+    [18, DoorHelp],
+    [19, DoorHelp],
+    [20, DoorStickerSammlung],
+    [21, DoorGemeinschaftskontoAdd],
+    [22, DoorHelp],
+    [23, DoorHelp],
+    [24, DoorVHS],
+  ]);
+
+  // precompute ordered entries for iteration
+  const doorEntries = Array.from(doorMap.entries()).sort((a, b) => a[0] - b[0]);
 </script>
 
 <!-- Fullscreen background video -->
@@ -49,9 +71,9 @@
     <div class="door-container">
 
       <!-- use a list of component constructors so each slot can render a variable component -->
-      {#each doorList as DoorComponent, i}
-        <AnimatedDoor day={i + 1} let:opened>
-          <svelte:component this={DoorComponent} opened={opened} day={i+1}/>
+      {#each doorEntries as [day, DoorComponent]}
+        <AnimatedDoor day={day} let:opened>
+          <svelte:component this={DoorComponent} opened={opened} day={day}/>
         </AnimatedDoor>
       {/each}
     </div>

@@ -1,10 +1,8 @@
 
 
 <script>
-  import { stopPropagation } from 'svelte/legacy';
     import Dialog from '../Dialog.svelte';
   import GiftButton from '../GiftButton.svelte';
-  import DialogHeader from '../../components/DialogHeader.svelte';
     // `opened` comes from the parent AnimatedDoor via slot prop
     export let opened = false;
     export let day = 0;
