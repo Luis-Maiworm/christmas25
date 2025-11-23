@@ -18,7 +18,7 @@
   $: current = now ? new Date(2025, 11, 24) : new Date();
   // $: current = now ? new Date(now) : new Date();
 
-  $: targetDate = new Date(2025, 9, Number(day)); // month 11 = December
+  $: targetDate = new Date(2025, 10, Number(day)); // month 11 = December
   // $: targetDate = new Date(2025, 9, Number(day)); // month 11 = December
   $: interactable = current >= targetDate;
 //   $: interactable = true;

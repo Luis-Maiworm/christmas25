@@ -20,6 +20,9 @@
   import DoorHelp from './lib/doors/DoorHelp.svelte';
   import DoorGlhwein from './lib/doors/DoorGlühwein.svelte';
   import DoorVHS from './lib/doors/DoorVHS.svelte';
+  import DoorPointerPointer from './lib/doors/DoorPointerPointer.svelte';
+  import DoorPeruThrowback from './lib/doors/DoorPeruThrowback.svelte';
+  // import DoorIsItChristmas from './lib/doors/DoorIsItChristmas.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
   // hardcoded map: day (1..24) -> Svelte component
   // Edit these assignments to control which component appears for each day.
@@ -35,19 +38,19 @@
     [8, DoorKrppelchen], // Kräppelchen -> für den 10.
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
-    // [11, DoorHelp],
-    // [12, DoorHelp],
+    // [11, DoorMovie?],
+    // [12, DoorPodcast?],
     
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
     [16, DoorGifSammlung],
-    // [17, DoorHelp],
+    [17, DoorPointerPointer],
     [18, DoorCuteAnimals],
-    [19, DoorHelp],
+    // [19, DoorIsItChristmas],
     [20, DoorStickerSammlung],
     [21, DoorGemeinschaftskontoAdd],
-    // [22, DoorHelp],
+    [22, DoorPeruThrowback],
     // [23, DoorHelp],
     [24, DoorVHS],
   ]);
