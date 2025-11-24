@@ -36,6 +36,8 @@
     box-shadow: 0 12px 40px rgba(247, 246, 246, 0.35);
     position: absolute;
     overflow: hidden;
+    /* ensure dialog doesn't inherit pointer cursor from parent elements */
+    cursor: default;
   }
   @media (max-width: 640px) {
 		dialog {
@@ -45,6 +47,8 @@
 
   dialog::backdrop {
     background: rgba(0,0,0,0);
+    /* backdrop should also show default cursor (not pointer) */
+    cursor: default;
   }
 
   /* Einblendung wenn open gesetzt ist */
@@ -90,5 +94,9 @@
     pointer-events: none;
     background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 20%, transparent 45%);
     mix-blend-mode: overlay;
+  }
+  /* ensure inner content uses normal cursor unless an element sets its own */
+  dialog, dialog * {
+    cursor: auto;
   }
 </style>

@@ -22,6 +22,7 @@
   import DoorVHS from './lib/doors/DoorVHS.svelte';
   import DoorPointerPointer from './lib/doors/DoorPointerPointer.svelte';
   import DoorPeruThrowback from './lib/doors/DoorPeruThrowback.svelte';
+    import DoorQuiz from './lib/doors/DoorQuiz.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
   
   // @ts-ignore
@@ -30,7 +31,7 @@
     [1, DoorMate],
     [2, DoorQRCodeWebsite],
     [3, Door01099],
-    // [4, DoorQuiz? Ieine witzige Frage -> Google It For Me],
+    [4, DoorQuiz],
     [5, DoorWeisheit],
     [6, DoorCafe],
     [7, DoorGemeinschaftskonto],
@@ -38,8 +39,7 @@
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
     // [11, DoorPodcast?],
-    // [12, DoorIsItChristmas?],
-    
+    // [12, ?],
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
@@ -49,7 +49,7 @@
     // [19, DoorPeruThrowback2],
     // [20, DoorIsItChristmas],
     [21, DoorGemeinschaftskontoAdd],
-    // [23, DoorHelp],
+    // [22, DoorHelp],
     // [23, DoorPeruThrowback3],
     [24, DoorVHS],
     // [25, IsItChristmas?],
