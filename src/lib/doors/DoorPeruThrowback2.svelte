@@ -87,7 +87,12 @@
 		"sweeter dog 2.mp4",
 		"plin isst.mp4",
 	]
-
+document.addEventListener("DOMContentLoaded", () => {
+		const vids = document.querySelectorAll("video");
+		vids.forEach(v => {
+			v.volume = 0.5;
+		});
+	});
 </script>
 
 <div class="peruWrapper">

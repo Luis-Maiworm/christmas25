@@ -60,8 +60,6 @@
  
 
 <script>
-	import { onMount, onDestroy } from 'svelte';
-
 	const base = "/throwback/3/";
 
 	const chapterOne = [
@@ -96,51 +94,15 @@
 		"100.png",
 	]
 
-
-	/** @type {HTMLElement | null} */
-	let wrapper = null;
-	let observer;
-
-	onMount(() => {
-		const options = { threshold: 0.5 };
-		observer = new IntersectionObserver(async (entries) => {
-			for (const entry of entries) {
-				const v = entry.target;
-				if (!(v instanceof HTMLVideoElement)) continue;
-
-				if (entry.isIntersecting) {
-					// prefer audible playback at 50% volume; if blocked, fall back to muted autoplay
-					try {
-						v.volume = 0.5;
-						v.muted = false;
-						await v.play();
-					} catch (err) {
-						// autoplay with sound blocked: try muted autoplay so user sees playback
-						try {
-							v.muted = true;
-							await v.play();
-						} catch (err2) {
-							// give up — user interaction required
-						}
-					}
-				} else {
-					// pause when scrolled out of view to save CPU/bandwidth
-					try { v.pause(); } catch (e) {}
-				}
-			}
-		}, options);
-
-		// observe videos inside the wrapper
-		const videos = wrapper ? wrapper.querySelectorAll('video.media') : [];
-		videos.forEach((v) => observer.observe(v));
-	});
-
-	onDestroy(() => {
-		if (observer) observer.disconnect();
+document.addEventListener("DOMContentLoaded", () => {
+		const vids = document.querySelectorAll("video");
+		vids.forEach(v => {
+			v.volume = 0.5;
+		});
 	});
 </script>
 
-<div class="peruWrapper" bind:this={wrapper}>
+<div class="peruWrapper">
 	<h3>Peru Throwback Pt. 3</h3>
 
 	{#each chapterOne as media}

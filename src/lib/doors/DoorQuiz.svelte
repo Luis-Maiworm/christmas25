@@ -1,6 +1,6 @@
 <script>
-  const question = "Was ist die Hauptstadt von Deutschland?";
-  const correctAnswer = "berlin";
+  const question = "Was ist die Hauptstadt von Bhutan?";
+  const correctAnswer = "thimphu";
   const solutionUrl = "https://letmegooglethat.com/?q=" + question;
 
   let userAnswer = "";

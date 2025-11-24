@@ -25,6 +25,8 @@
     import DoorQuiz from './lib/doors/DoorQuiz.svelte';
   import DoorPeruThrowback2 from './lib/doors/DoorPeruThrowback2.svelte';
   import DoorPeruThrowback3 from './lib/doors/DoorPeruThrowback3.svelte';
+  import DoorIsItChristmas from './lib/doors/DoorIsItChristmas.svelte';
+  import DoorIsItChristmas2 from './lib/doors/DoorIsItChristmas2.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
   
   // @ts-ignore
@@ -41,7 +43,7 @@
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
     // [11, DoorPodcast?],
-    // [12, ?],
+    [12, DoorStickerSammlung],
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
@@ -49,12 +51,12 @@
     [17, DoorPointerPointer],
     [18, DoorCuteAnimals],
     [19, DoorPeruThrowback2],
-    // [20, DoorIsItChristmas],
+    [20, DoorIsItChristmas],
     [21, DoorGemeinschaftskontoAdd],
     // [22, DoorHelp],
     [23, DoorPeruThrowback3],
     [24, DoorVHS],
-    // [25, IsItChristmas?],
+    [25, DoorIsItChristmas2],
   ]);
 
   // precompute ordered entries for iteration (by day key)
@@ -71,7 +73,7 @@
   }
 
   const doorEntriesRandom = shuffle(doorEntries);
-  const now = new Date(2025, 11, 24, 18, 0, 0);
+  const now = new Date(2025, 11, 25, 18, 0, 0);
 </script>
 
 <!-- Fullscreen background video -->

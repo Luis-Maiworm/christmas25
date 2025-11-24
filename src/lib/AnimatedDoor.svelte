@@ -271,7 +271,9 @@ onDestroy(() => {
 >
   <div class="day" aria-hidden="true">
     {#if interactable}
-      {#if day !== 24}
+      {#if day === 0}
+        {"❔"}
+      {:else if day !== 24}
         {day}
       {:else}
         {"🎄"}
