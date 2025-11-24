@@ -20,16 +20,28 @@
 		margin: 0 auto;
 	}
 
-	figure:nth-child(1) img  { transform: scale(0.6) rotate(-12.5deg); }
-	figure:nth-child(2) img  { transform: scale(0.6) rotate(-9.722222deg); }
-	figure:nth-child(3) img  { transform: scale(0.6) rotate(-6.944444deg); }
-	figure:nth-child(4) img  { transform: scale(0.6) rotate(-4.166667deg); }
-	figure:nth-child(5) img  { transform: scale(0.6) rotate(-1.388889deg); }
-	figure:nth-child(6) img  { transform: scale(0.6) rotate(1.388889deg); }
-	figure:nth-child(7) img  { transform: scale(0.6) rotate(4.166667deg); }
-	figure:nth-child(8) img  { transform: scale(0.6) rotate(6.944444deg); }
-	figure:nth-child(9) img  { transform: scale(0.6) rotate(9.722222deg); }
-	figure:nth-child(10) img { transform: scale(0.6) rotate(12.5deg); }
+	figure:nth-child(1) img  { transform: scale(1.0) rotate(-12.5deg); }
+	figure:nth-child(2) img  { transform: scale(1.0) rotate(-9.722222deg); }
+	figure:nth-child(3) img  { transform: scale(1.0) rotate(-6.944444deg); }
+	figure:nth-child(4) img  { transform: scale(1.0) rotate(-4.166667deg); }
+	figure:nth-child(5) img  { transform: scale(1.0) rotate(-1.388889deg); }
+	figure:nth-child(6) img  { transform: scale(1.0) rotate(1.388889deg); }
+	figure:nth-child(7) img  { transform: scale(1.0) rotate(4.166667deg); }
+	figure:nth-child(8) img  { transform: scale(1.0) rotate(6.944444deg); }
+	figure:nth-child(9) img  { transform: scale(1.0) rotate(9.722222deg); }
+	figure:nth-child(10) img { transform: scale(1.0) rotate(12.5deg); }
+
+	/* repeat pattern for 11-20 */
+	figure:nth-child(11) img { transform: scale(1.0) rotate(-12.5deg); }
+	figure:nth-child(12) img { transform: scale(1.0) rotate(-9.722222deg); }
+	figure:nth-child(13) img { transform: scale(1.0) rotate(-6.944444deg); }
+	figure:nth-child(14) img { transform: scale(1.0) rotate(-4.166667deg); }
+	figure:nth-child(15) img { transform: scale(1.0) rotate(-1.388889deg); }
+	figure:nth-child(16) img { transform: scale(1.0) rotate(1.388889deg); }
+	figure:nth-child(17) img { transform: scale(1.0) rotate(4.166667deg); }
+	figure:nth-child(18) img { transform: scale(1.0) rotate(6.944444deg); }
+	figure:nth-child(19) img { transform: scale(1.0) rotate(9.722222deg); }
+	figure:nth-child(20) img { transform: scale(1.0) rotate(12.5deg); }
 
 	/* keep media aspect ratio while fitting into the figure container
 	   use max-width / max-height and let browser scale preserving ratio */
@@ -48,33 +60,54 @@
  
 
 <script>
-	// const photos = Array.from({ length: 10 }, (_, i) => `/sticker/plim_sticker_${i + 1}.jpg`);
-	const path = "/throwback/"
-	const photos = [ "ice", "colcatal", "ice2", "alpaka"]
-	console.log(photos)
-	const videos = ["vid_1", "vid_2", "vid_3"];
+	const base = "/throwback/1/";
+
+	const chapterOne = [
+		"00.mp4",
+		"01.mp4",
+		"02.jpg",
+		"03.jpg",
+		"04.mp4",
+		"05.mp4",
+		"06.mp4",
+		"07.mp4",
+		"08.jpg",
+		"09.jpg",
+		"10.mp4",
+		"11.jpg",
+		"12.mp4",
+		"13.mp4",
+		"14.jpg",
+		"15.mp4",
+		"16.mp4",
+		"17.jpg",
+		"18.mp4",
+	]
+
 </script>
 
 <div class="peruWrapper">
 
-	{#each photos as photo}
-		<figure>
-			<img src={path + photo + ".jpg"} alt="" />
-		</figure>
-	{/each}
-
-	{#each videos as video}
-		<figure>
+	{#each chapterOne as media}
+	<figure>
+		{#if media.endsWith(".jpg")}
+			<img src={base + media} alt="" />
+		{:else}
 			<video
 				class="media"
-				src={path + video + ".mp4"}
+				src={base + media}
 				playsinline
 				controls
 				preload="metadata"
 			>
-				<!-- add a captions track to satisfy accessibility checks; replace src with an actual .vtt if available -->
-				<track kind="captions" src={path + video + ".vtt"} srclang="en" label="captions" />
+				<track
+				kind="captions"
+				src={"/throwback/1/" + media.replace(".mp4", ".vtt")}
+				srclang="en"
+				label="captions"
+			/>
 			</video>
-		</figure>
+		{/if}
+	</figure>
 	{/each}
 </div>
