@@ -22,37 +22,37 @@
   import DoorVHS from './lib/doors/DoorVHS.svelte';
   import DoorPointerPointer from './lib/doors/DoorPointerPointer.svelte';
   import DoorPeruThrowback from './lib/doors/DoorPeruThrowback.svelte';
-  // import DoorIsItChristmas from './lib/doors/DoorIsItChristmas.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
-  // hardcoded map: day (1..24) -> Svelte component
-  // Edit these assignments to control which component appears for each day.
+  
+  // @ts-ignore
   const doorMap = new Map([
     [0, DoorHelp],
     [1, DoorMate],
     [2, DoorQRCodeWebsite],
     [3, Door01099],
-    // [4, DoorHelp],
+    // [4, DoorQuiz? Ieine witzige Frage -> Google It For Me],
     [5, DoorWeisheit],
     [6, DoorCafe],
     [7, DoorGemeinschaftskonto],
     [8, DoorKrppelchen], // Kräppelchen -> für den 10.
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
-    // [11, DoorMovie?],
-    // [12, DoorPodcast?],
+    // [11, DoorPodcast?],
+    // [12, DoorIsItChristmas?],
     
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
-    [16, DoorGifSammlung],
+    [16, DoorPeruThrowback],
     [17, DoorPointerPointer],
     [18, DoorCuteAnimals],
-    // [19, DoorIsItChristmas],
-    [20, DoorStickerSammlung],
+    // [19, DoorPeruThrowback2],
+    // [20, DoorIsItChristmas],
     [21, DoorGemeinschaftskontoAdd],
-    [22, DoorPeruThrowback],
     // [23, DoorHelp],
+    // [23, DoorPeruThrowback3],
     [24, DoorVHS],
+    // [25, IsItChristmas?],
   ]);
 
   // precompute ordered entries for iteration (by day key)
@@ -69,6 +69,7 @@
   }
 
   const doorEntriesRandom = shuffle(doorEntries);
+  const now = new Date(2025, 11, 24, 18, 0, 0);
 </script>
 
 <!-- Fullscreen background video -->
@@ -87,10 +88,21 @@
 
       <!-- use a list of component constructors so each slot can render a variable component -->
       {#each doorEntriesRandom as [day, DoorComponent]}
-        <AnimatedDoor day={day} let:opened>
+        <AnimatedDoor
+        now={now}
+        day={day}
+        let:opened>
           <svelte:component this={DoorComponent} opened={opened} day={day}/>
         </AnimatedDoor>
       {/each}
+      {#if now >= new Date(2025, 11, 24)}
+        <AnimatedDoor
+          now={now}
+          day={25}
+          let:opened>
+          <DoorHelp opened={opened} day={25} />
+        </AnimatedDoor>
+      {/if}
     </div>
 
   </main>

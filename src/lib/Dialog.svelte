@@ -34,7 +34,7 @@
     max-width: 560px;
     width: 90vw;
     box-shadow: 0 12px 40px rgba(247, 246, 246, 0.35);
-    position: relative;
+    position: absolute;
     overflow: hidden;
   }
   @media (max-width: 640px) {

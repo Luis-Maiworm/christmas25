@@ -40,6 +40,9 @@
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .dialog-close {

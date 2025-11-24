@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-    import { playSound } from './playSound';
+  import { playSound } from './playSound';
   import Door from './doors/Door.svelte';
 
   // persisted open state
@@ -15,13 +15,56 @@
   const storageKey = () => `${storageKeyPrefix}${day}`;
 
   // computed availability: only interactable on or after day.Dec.2025
-  $: current = now ? new Date(2025, 11, 24) : new Date();
-  // $: current = now ? new Date(now) : new Date();
+  $: current = now ? new Date(now) : new Date();
+  $: targetChristmas = new Date(2025, 11, 24, 18, 0, 0);
 
-  $: targetDate = new Date(2025, 10, Number(day)); // month 11 = December
-  // $: targetDate = new Date(2025, 9, Number(day)); // month 11 = December
-  $: interactable = current >= targetDate;
+  $: targetDate = new Date(2025, 11, Number(day)); // month 11 = December
+  // use the special christmas evening time for day 24, otherwise midnight of the day
+  $: interactable = day === 24 ? current >= targetChristmas : current >= targetDate;
 //   $: interactable = true;
+
+import { onDestroy } from 'svelte';
+
+export let remainingTime: string = '';
+
+let _timer: ReturnType<typeof setInterval> | null = null;
+
+function updateNow() {
+  current = now ? new Date(now) : new Date();
+  updateRemaining();
+}
+
+function updateRemaining() {
+  if (day !== 24) {
+    remainingTime = '';
+    return;
+  }
+
+  // Wenn das aktuelle Datum VOR dem 24. ist, nur ein Schloss anzeigen
+  if (current < targetDate) {
+    remainingTime = '🔒';
+    return;
+  }
+
+  const diff = targetChristmas.getTime() - current.getTime();
+  if (diff <= 0) {
+    remainingTime = '0:00';
+    return;
+  }
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  remainingTime = `${hours}:${String(minutes).padStart(2, '0')}`;
+}
+
+onMount(() => {
+  updateNow();
+  // update every second so minutes roll over exactly; could use 60000 for minute precision
+  _timer = setInterval(updateNow, 1000);
+});
+
+onDestroy(() => {
+  if (_timer) clearInterval(_timer);
+});
 
   // read persisted state on mount
   onMount(() => {
@@ -228,9 +271,17 @@
 >
   <div class="day" aria-hidden="true">
     {#if interactable}
-      {day}
+      {#if day !== 24}
+        {day}
+      {:else}
+        {"🎄"}
+      {/if}
     {:else}
-      <span class="lock" aria-label="locked">🔒</span>
+    {#if day !== 24}
+        <span class="lock" aria-label="locked">🔒</span>
+      {:else}
+        <span class="lock" aria-label="locked">{remainingTime}</span>
+      {/if}
     {/if}
   </div>
 
