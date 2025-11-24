@@ -23,6 +23,8 @@
   import DoorPointerPointer from './lib/doors/DoorPointerPointer.svelte';
   import DoorPeruThrowback from './lib/doors/DoorPeruThrowback.svelte';
     import DoorQuiz from './lib/doors/DoorQuiz.svelte';
+  import DoorPeruThrowback2 from './lib/doors/DoorPeruThrowback2.svelte';
+  import DoorPeruThrowback3 from './lib/doors/DoorPeruThrowback3.svelte';
   const bgVideoSrc = '/dialog-background.mp4';
   
   // @ts-ignore
@@ -46,11 +48,11 @@
     [16, DoorPeruThrowback],
     [17, DoorPointerPointer],
     [18, DoorCuteAnimals],
-    // [19, DoorPeruThrowback2],
+    [19, DoorPeruThrowback2],
     // [20, DoorIsItChristmas],
     [21, DoorGemeinschaftskontoAdd],
     // [22, DoorHelp],
-    // [23, DoorPeruThrowback3],
+    [23, DoorPeruThrowback3],
     [24, DoorVHS],
     // [25, IsItChristmas?],
   ]);

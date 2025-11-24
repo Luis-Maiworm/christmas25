@@ -60,37 +60,92 @@
  
 
 <script>
-	const base = "/throwback/1/";
+	import { onMount, onDestroy } from 'svelte';
+
+	const base = "/throwback/3/";
 
 	const chapterOne = [
-		"00.mp4",
-		"01.mp4",
-		"02.jpg",
-		"03.jpg",
-		"04.mp4",
-		"05.mp4",
-		"06.mp4",
-		"07.mp4",
-		"08.jpg",
-		"09.jpg",
-		"10.mp4",
-		"11.jpg",
-		"12.mp4",
-		"13.mp4",
-		"14.jpg",
-		"15.mp4",
-		"16.mp4",
-		"17.jpg",
-		"18.mp4",
+		"colca.jpg",
+		"colca canyon.mp4",
+		"falke.mp4",
+		"ice.jpg",
+		"plin alpaka.mp4",
+		
+		
+		"cart desert.mp4",
+		"desert.jpg",
+		"wüste.mp4",
+		"desert 2.jpg",
+		"desert 3.jpg",
+		"pisco.mp4",
+		"pisco fest.jpg",
+		"pisco fest og.jpg",
+		"plims ica.jpg",
+		"plin trinkt.mp4",
+
+		"paracas.jpg",
+		"paracas bogen.jpg",
+		"plin motorroller.mp4",
+		"plin bikini.mp4",
+		"plim am strand.mp4",
+		"plin moves.mp4",
+		
+		"plin regendings.mp4",
+		"plin sda.mp4",
+		
+		"100.png",
 	]
 
+
+	/** @type {HTMLElement | null} */
+	let wrapper = null;
+	let observer;
+
+	onMount(() => {
+		const options = { threshold: 0.5 };
+		observer = new IntersectionObserver(async (entries) => {
+			for (const entry of entries) {
+				const v = entry.target;
+				if (!(v instanceof HTMLVideoElement)) continue;
+
+				if (entry.isIntersecting) {
+					// prefer audible playback at 50% volume; if blocked, fall back to muted autoplay
+					try {
+						v.volume = 0.5;
+						v.muted = false;
+						await v.play();
+					} catch (err) {
+						// autoplay with sound blocked: try muted autoplay so user sees playback
+						try {
+							v.muted = true;
+							await v.play();
+						} catch (err2) {
+							// give up — user interaction required
+						}
+					}
+				} else {
+					// pause when scrolled out of view to save CPU/bandwidth
+					try { v.pause(); } catch (e) {}
+				}
+			}
+		}, options);
+
+		// observe videos inside the wrapper
+		const videos = wrapper ? wrapper.querySelectorAll('video.media') : [];
+		videos.forEach((v) => observer.observe(v));
+	});
+
+	onDestroy(() => {
+		if (observer) observer.disconnect();
+	});
 </script>
 
-<div class="peruWrapper">
-	<h3>Peru Throwback</h3>
+<div class="peruWrapper" bind:this={wrapper}>
+	<h3>Peru Throwback Pt. 3</h3>
+
 	{#each chapterOne as media}
 	<figure>
-		{#if media.endsWith(".jpg")}
+		{#if media.endsWith(".jpg") || media.endsWith(".png")}
 			<img src={base + media} alt="" />
 		{:else}
 			<video

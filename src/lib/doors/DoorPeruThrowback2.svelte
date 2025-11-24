@@ -60,35 +60,39 @@
  
 
 <script>
-	const base = "/throwback/1/";
+	const base = "/throwback/2/";
 
-	const chapterOne = [
-		"00.mp4",
-		"01.mp4",
-		"02.jpg",
-		"03.jpg",
-		"04.mp4",
-		"05.mp4",
-		"06.mp4",
-		"07.mp4",
-		"08.jpg",
-		"09.jpg",
-		"10.mp4",
+	const chapterTwo = [
+		"01_chips.jpg",
+		"chips.jpg",
+		"machu picchu wandern.mp4",
+		"wanderhund.mp4",
+		"machu.mp4",
+		"8.jpg",
+		"tiny dog.mp4",
+		"fresh dog.mp4",
+		"vinicunca.mp4",
+		"10.jpg",
+		
 		"11.jpg",
-		"12.mp4",
-		"13.mp4",
-		"14.jpg",
-		"15.mp4",
-		"16.mp4",
-		"17.jpg",
-		"18.mp4",
+		"island.mp4",
+		"zoo.mp4",
+		"12.jpg",
+		"dickes alpaka.mp4",
+		"sweeter dog.mp4",
+		"karte zoo.mp4",
+		"roomtour luxus.mp4",
+		"birthday vid.mp4",
+		"nice dinner.mp4",
+		"sweeter dog 2.mp4",
+		"plin isst.mp4",
 	]
 
 </script>
 
 <div class="peruWrapper">
-	<h3>Peru Throwback</h3>
-	{#each chapterOne as media}
+	<h3>Peru Throwback Pt. 2</h3>
+	{#each chapterTwo as media}
 	<figure>
 		{#if media.endsWith(".jpg")}
 			<img src={base + media} alt="" />
