@@ -1,3 +1,0 @@
-Kurz ein paar Informationen zum finanziellen (hatte kein anderes Formularfeld für generelle Anmerkungen gefunden). Die Anfangs angegebenen 478€, für die wir den Mittelbescheid bekommen haben, waren für eine Musterrechnung für 10 Teilnehmer:innen. Wir waren nun insgesamt 12 Teilnehmer:innen (auch aufgrund der finanziellen Erleichterungen durch die Förderung) am ersten Abend, am Zweiten waren wir 11. Entsprechend ist der Preis höher geworden, die Fördermittel konnten aber zu 100% für den entsprechenden Verwendungszweck (Unterkunft) verwendet werden.
-
-An der Stelle auch nocheinmal vielen, vielen Dank für die Förderung. Ohne Sie, wäre dieses Projekt wahrscheinlich nicht in der Form möglich gewesen!
