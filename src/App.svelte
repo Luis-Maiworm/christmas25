@@ -27,14 +27,15 @@
   import DoorPeruThrowback3 from './lib/doors/DoorPeruThrowback3.svelte';
   import DoorIsItChristmas from './lib/doors/DoorIsItChristmas.svelte';
   import DoorIsItChristmas2 from './lib/doors/DoorIsItChristmas2.svelte';
+  import DoorKinoLuru from './lib/doors/DoorKinoLuru.svelte';
+  import DoorWebsite from './lib/doors/DoorWebsite.svelte';
   const bgVideoSrc = import.meta.env.BASE_URL + '/dialog-background.mp4';
   
   // @ts-ignore
   const doorMap = new Map([
-    [0, DoorHelp],
     [1, DoorMate],
     [2, DoorQRCodeWebsite],
-    [3, Door01099],
+    [3, DoorKinoLuru],
     [4, DoorQuiz],
     [5, DoorWeisheit],
     [6, DoorCafe],
@@ -42,7 +43,7 @@
     [8, DoorKrppelchen], // Kräppelchen -> für den 10.
     [9, DoorGlhwein], // Glühwein
     [10, DoorQRCodeRoute], // 10!
-    // [11, DoorPodcast?],
+    [11, Door01099],
     [12, DoorStickerSammlung],
     [13, DoorSpotify],
     [14, DoorGemeinschaftskonto],
@@ -53,10 +54,9 @@
     [19, DoorPeruThrowback2],
     [20, DoorIsItChristmas],
     [21, DoorGemeinschaftskontoAdd],
-    // [22, DoorHelp],
+    [22, DoorWebsite],
     [23, DoorPeruThrowback3],
     [24, DoorVHS],
-    [25, DoorIsItChristmas2],
   ]);
 
   // precompute ordered entries for iteration (by day key)
@@ -73,7 +73,8 @@
   }
 
   const doorEntriesRandom = shuffle(doorEntries);
-  const now = new Date(2025, 11, 25, 18, 0, 0);
+  // const now = new Date(2025, 11, 25, 18, 0, 0);
+  const now = new Date();
 </script>
 
 <!-- Fullscreen background video -->
@@ -84,10 +85,18 @@
 <div class="app-content">
   <Snowflakes />
   <Lights />
-  <!-- <BackgroundMusic /> -->
+  <BackgroundMusic />
 
   <main>
     <h1>(Adventskalender 2025)</h1>
+    <div class="help">
+      <AnimatedDoor
+        now={now}
+        day={0}
+        let:opened>
+        <DoorHelp opened={opened} day={0} />
+      </AnimatedDoor>
+    </div>
     <div class="door-container">
 
       <!-- use a list of component constructors so each slot can render a variable component -->
@@ -104,7 +113,7 @@
           now={now}
           day={25}
           let:opened>
-          <DoorHelp opened={opened} day={25} />
+          <DoorIsItChristmas2 opened={opened} day={25} />
         </AnimatedDoor>
       {/if}
     </div>
@@ -120,6 +129,12 @@ main {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+}
+
+.help {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
 }
 
 .door-container {

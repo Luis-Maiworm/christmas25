@@ -3,7 +3,7 @@
 
   // simple background audio: no UI, no storage, autoplay fallback
   export let src = "jingle.mp3";
-  export let volume = 0.3;
+  export let volume = 0.15;
 
   let audio: HTMLAudioElement;
 

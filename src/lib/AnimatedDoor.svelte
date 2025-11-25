@@ -273,6 +273,8 @@ onDestroy(() => {
     {#if interactable}
       {#if day === 0}
         {"❔"}
+      {:else if day === 25}
+        {"🤭"}
       {:else if day !== 24}
         {day}
       {:else}
