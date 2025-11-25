@@ -11,5 +11,5 @@ p {
 </style>
 
 
-<img src="/doors/qr_code_route.png" alt="">
+<img src={import.meta.env.BASE_URL + '/doors/qr_code_route.png'} alt="">
 <p>Route für Heute</p>

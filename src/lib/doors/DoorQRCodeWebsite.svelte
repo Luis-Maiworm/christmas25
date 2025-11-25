@@ -8,5 +8,5 @@ img {
 </style>
 
 
-<img src="/doors/qr_code.png" alt="">
+<img src={import.meta.env.BASE_URL + '/doors/qr_code.png'} alt="">
 <p>Du willst kostenlos YouTube (Musik-)Videos runterladen?</p>

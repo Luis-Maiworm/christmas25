@@ -11,6 +11,6 @@
     }
 </style>
 
-<img src="/doors/wein.png" alt="" class="wein"/>
+<img src={import.meta.env.BASE_URL + '/doors/wein.png'} alt="" class="wein"/>
 <p>Gutschein: Glühwein. Könntest du ebenfalls bald gebrauchen!</p>
 <p>Code: Glühli</p>

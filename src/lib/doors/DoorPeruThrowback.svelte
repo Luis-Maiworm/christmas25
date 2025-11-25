@@ -60,7 +60,7 @@
  
 
 <script>
-	const base = "/throwback/1/";
+	const base = import.meta.env.BASE_URL + '/throwback/1/';
 
 	const chapterOne = [
 		"00.mp4",

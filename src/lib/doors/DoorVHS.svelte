@@ -1,15 +1,10 @@
 <div class="pdf-wrapper">
   <iframe
-    src="/doors/VHS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+    src={import.meta.env.BASE_URL + '/doors/VHS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit'}
     class="pdf-viewer"
     title="PDF viewer"
     aria-label="PDF viewer"
   ></iframe>
-
-  <!-- embed fallback for browsers that handle application/pdf better -->
-  <noscript>
-    <embed src="/doors/Alles%20Gute!.pdf" type="application/pdf" class="pdf-viewer" />
-  </noscript>
 </div>
 
 <style>

@@ -1,4 +1,4 @@
-<img src="/doors/muzen.png" alt="" class="muzen"/>
+<img src={import.meta.env.BASE_URL + '/doors/muzen.png'} alt="" class="muzen"/>
 
 <style>
     .muzen {

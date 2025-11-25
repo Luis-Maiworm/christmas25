@@ -27,7 +27,7 @@
   import DoorPeruThrowback3 from './lib/doors/DoorPeruThrowback3.svelte';
   import DoorIsItChristmas from './lib/doors/DoorIsItChristmas.svelte';
   import DoorIsItChristmas2 from './lib/doors/DoorIsItChristmas2.svelte';
-  const bgVideoSrc = '/dialog-background.mp4';
+  const bgVideoSrc = import.meta.env.BASE_URL + '/dialog-background.mp4';
   
   // @ts-ignore
   const doorMap = new Map([

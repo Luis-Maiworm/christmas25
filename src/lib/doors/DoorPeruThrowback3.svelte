@@ -60,7 +60,7 @@
  
 
 <script>
-	const base = "/throwback/3/";
+	const base = import.meta.env.BASE_URL + '/throwback/3/';
 
 	const chapterOne = [
 		"colca.jpg",

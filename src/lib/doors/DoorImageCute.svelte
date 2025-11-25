@@ -20,6 +20,6 @@
 </style>
 
 <div class="alpaka">
-	<img src="/doors/alpaka.png" alt="">
+	<img src={import.meta.env.BASE_URL + '/doors/alpaka.png'} alt="">
   <p>Hier! Ein Alapaka!</p>
 </div>

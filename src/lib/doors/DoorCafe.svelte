@@ -14,6 +14,6 @@
 </style>
 
 <div class="cafe">
-	<img src="/doors/coffee.png" alt="coffee" />
+	<img src={import.meta.env.BASE_URL + '/doors/coffee.png'} alt="coffee" />
 	<p>Gutschein für ein Kaffeegetränk deiner Wahl</p>
 </div>

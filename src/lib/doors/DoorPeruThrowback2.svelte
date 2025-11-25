@@ -60,7 +60,7 @@
  
 
 <script>
-	const base = "/throwback/2/";
+	const base = import.meta.env.BASE_URL + '/throwback/2/';
 
 	const chapterTwo = [
 		"01_chips.jpg",
