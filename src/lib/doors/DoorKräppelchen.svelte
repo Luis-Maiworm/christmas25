@@ -11,5 +11,4 @@
         margin: 0 auto 1rem;
     }
 </style>
-<p>Gutschein für Kräppelchen. Könntest du bald gebrauchen!</p>
-<p>Code: Schmalzkuchen/Mutzen</p>
+<p>Gutschein für Schmalzkuchen/Mutzen. Könntest du bald gebrauchen!</p>

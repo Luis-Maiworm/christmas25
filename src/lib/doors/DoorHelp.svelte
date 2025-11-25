@@ -1,1 +1,1 @@
-<p>Hier mein digitaler Adventskalender für Dich. Beachte: Gutscheine können nur durch das Aussprechen des Code-Wortes eingelöst werden! Für die optimale Experience bitte aufm Laptop anschauen!</p>
+<p>Hier mein digitaler Adventskalender für Dich. Für die optimale Experience bitte aufm Laptop anschauen!</p>
