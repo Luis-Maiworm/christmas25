@@ -1,4 +1,4 @@
-<img src="/public/doors/muzen.png" alt="" class="muzen"/>
+<img src="/doors/muzen.png" alt="" class="muzen"/>
 
 <style>
     .muzen {

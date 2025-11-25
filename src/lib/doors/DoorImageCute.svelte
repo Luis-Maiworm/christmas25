@@ -20,6 +20,6 @@
 </style>
 
 <div class="alpaka">
-	<img src="/public/doors/alpaka.png" alt="">
+	<img src="/doors/alpaka.png" alt="">
   <p>Hier! Ein Alapaka!</p>
 </div>

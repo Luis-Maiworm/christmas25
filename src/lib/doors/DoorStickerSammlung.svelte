@@ -12,7 +12,7 @@
 
     const stickers = Array.from({ length: count }, (_, i) => ({
         id: i,
-        src: `/public/sticker/plim_sticker_${start + i}.${ext}`
+        src: `/sticker/plim_sticker_${start + i}.${ext}`
     }));
 
     let positions = [];
