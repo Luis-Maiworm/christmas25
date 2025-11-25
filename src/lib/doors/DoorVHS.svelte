@@ -1,10 +1,4 @@
 <div class="pdf-wrapper">
-  <!--
-    Try to hide viewer chrome with URL fragment parameters. Note: support
-    depends on the browser's built-in PDF viewer. Chrome's built-in viewer may
-    ignore some parameters. The file should live in `public/doors/Alles Gute!.pdf`
-    and is referenced here as /doors/Alles%20Gute!.pdf (space encoded).
-  -->
   <iframe
     src="/doors/VHS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
     class="pdf-viewer"
