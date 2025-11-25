@@ -3,7 +3,6 @@
 
     export let start = 1;   // erster Index
     export let count = 10;  // wie viele Sticker
-    export let ext = "jpg"; // Dateiendung
     export let size = 120;  // Kantenlänge in px
     export let rightFactor = 0.95; // how far to the right stickers may go (0..1)
 
@@ -12,7 +11,7 @@
 
     const stickers = Array.from({ length: count }, (_, i) => ({
         id: i,
-        src: import.meta.env.BASE_URL + `/sticker/plim_sticker_${start + i}.${ext}`
+        src: import.meta.env.BASE_URL + `sticker/plim_sticker_${start + i}.jpg`
     }));
 
     let positions = [];
