@@ -38,13 +38,13 @@
     [3, DoorKinoLuru],
     [4, DoorQuiz],
     [5, DoorWeisheit],
-    [6, DoorCafe],
+    [12, DoorCafe],
     [7, DoorGemeinschaftskonto],
-    [8, DoorKrppelchen], // Kräppelchen -> für den 10.
-    [9, DoorGlhwein], // Glühwein
-    [10, DoorQRCodeRoute], // 10!
-    [11, Door01099],
-    [12, DoorStickerSammlung],
+    [9, DoorKrppelchen], // Kräppelchen -> für den 10.
+    [10, DoorGlhwein], // Glühwein
+    [11, DoorQRCodeRoute], // 10!
+    [8, Door01099],
+    [6, DoorStickerSammlung],
     [13, DoorQRCodeWebsite],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
