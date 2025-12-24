@@ -34,7 +34,7 @@
   // @ts-ignore
   const doorMap = new Map([
     [1, DoorMate],
-    [2, DoorQRCodeWebsite],
+    [2, DoorSpotify],
     [3, DoorKinoLuru],
     [4, DoorQuiz],
     [5, DoorWeisheit],
@@ -45,7 +45,7 @@
     [10, DoorQRCodeRoute], // 10!
     [11, Door01099],
     [12, DoorStickerSammlung],
-    [13, DoorSpotify],
+    [13, DoorQRCodeWebsite],
     [14, DoorGemeinschaftskonto],
     [15, DoorImageCute],
     [16, DoorPeruThrowback],
