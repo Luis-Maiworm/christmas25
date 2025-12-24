@@ -16,7 +16,7 @@
 
   // computed availability: only interactable on or after day.Dec.2025
   $: current = now ? new Date(now) : new Date();
-  $: targetChristmas = new Date(2025, 11, 24, 18, 0, 0);
+  $: targetChristmas = new Date(2025, 11, 24, 17, 0, 0);
 
   $: targetDate = new Date(2025, 11, Number(day)); // month 11 = December
   // use the special christmas evening time for day 24, otherwise midnight of the day
